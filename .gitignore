@@ -1,0 +1,39 @@
+# Dependencias
+node_modules/
+**/node_modules/
+
+# IDEs y Editores
+.metadata/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# IDE Eclipse/STS
+.classpath
+.project
+.settings/
+.apt_generated/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Angular (si está vacío)
+Angular/
+
+# Repos embebidos (si no los quieres)
+Acceso-a-Datos/
+
+# Python/Odoo
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
