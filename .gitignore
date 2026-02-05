@@ -26,8 +26,7 @@ Thumbs.db
 # Angular (si está vacío)
 Angular/
 
-# Repos embebidos (si no los quieres)
-Acceso-a-Datos/
+
 
 # Python/Odoo
 __pycache__/
