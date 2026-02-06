@@ -1,23 +1,25 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Pokemon } from './pokemon';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  standalone: true, // Requerido para Angular 17+ sin módulos
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterOutlet, RouterModule, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App { // El nombre debe coincidir con el que busca main.ts
+export class App {
   protected readonly title = signal('my-app');
 
-  getHeroes() {
+  // Eliminamos "new Pokemon" porque ya no existe esa clase
+  // Usamos objetos simples de JavaScript { id, name }
+  getPokemon() {
     return [
-      new Pokemon(1, 'Spiderman'),
-      new Pokemon(13, 'Wonder Woman'),
-      new Pokemon(15, 'Lobezno'),
-      new Pokemon(20, 'Catwoman')
+      { id: 1, name: 'Pikachu' },
+      { id: 13, name: 'Charizard' },
+      { id: 15, name: 'Pidgey' },
+      { id: 20, name: 'Bulbasaur' }
     ];
   }
 }

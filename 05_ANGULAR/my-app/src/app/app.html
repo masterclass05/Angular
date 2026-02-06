@@ -1,12 +1,3 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
@@ -125,6 +116,7 @@
     letter-spacing: -0.00875rem;
     text-decoration: none;
     white-space: nowrap;
+    cursor: pointer;
   }
 
   .pill:hover {
@@ -231,8 +223,19 @@
         </defs>
       </svg>
       <h1>Hello, {{ title() }}</h1>
-      <h2>¡Hola2!, {{ title() }}</h2>
       <p>Congratulations! Your app is running. 🎉</p>
+      
+      <div class="pill-group" style="margin-top: 2rem;">
+        @for (pokemon of getPokemon(); track pokemon.id) {
+          <a class="pill" [routerLink]="['/pokemon', pokemon.id]">
+            <span>{{ pokemon.name }}</span>
+            @if (pokemon.name === 'Charizard') {
+              <small style="margin-left: 8px;"> ¡Fuego legendario!</small>
+            }
+          </a>
+        }
+      </div>
+
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
@@ -330,14 +333,5 @@
     </div>
   </div>
 </main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 
 <router-outlet />
