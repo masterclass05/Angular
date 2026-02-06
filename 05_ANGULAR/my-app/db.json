@@ -1,0 +1,24 @@
+{
+  "pokemons": [
+    {
+      "id": "a980",
+      "name": "Pikachu",
+      "type": "Eléctrico"
+    },
+    {
+      "id": "addb",
+      "name": "Charizard",
+      "type": "Fuego"
+    },
+    {
+      "id": "a465",
+      "name": "Squirtle",
+      "type": "Agua"
+    },
+    {
+      "id": "1fe1",
+      "name": "Bulbasaur",
+      "type": "Planta"
+    }
+  ]
+}

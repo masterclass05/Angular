@@ -1,0 +1,34 @@
+<div class="form-container">
+  <h3>{{ editando ? 'Editar Pokemon' : 'Añadir Nuevo Pokemon' }}</h3>
+  <input [(ngModel)]="nuevoPokemon.name" placeholder="Nombre">
+  <input [(ngModel)]="nuevoPokemon.type" placeholder="Tipo">
+  
+  <button (click)="guardar()" class="btn-success">
+    {{ editando ? 'Actualizar' : 'Añadir' }}
+  </button>
+  
+  @if (editando) {
+    <button (click)="cancelarEdicion()" class="btn-danger">Cancelar</button>
+  }
+</div>
+
+<hr>
+
+<div class="pokemon-grid">
+  @for (poke of listaPokemons; track poke.id) {
+    <div class="card">
+      <h3>{{ poke.name }}</h3>
+      <p>Tipo: {{ poke.type }}</p>
+      
+      <div class="card-actions">
+        <button (click)="seleccionarPokemon(poke)" class="btn-success">
+          Editar
+        </button>
+        
+        <button (click)="borrar(poke.id)" class="btn-danger">
+          Borrar
+        </button>
+      </div>
+    </div>
+  }
+</div>
