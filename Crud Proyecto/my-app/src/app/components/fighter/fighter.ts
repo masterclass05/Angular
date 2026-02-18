@@ -14,7 +14,6 @@ export class FighterComponent {
   fighterService = inject(FighterService);
   listaFighters: any[] = [];
   
-  // Adaptamos el objeto al mundo MMA
   nuevoFighter = { id: '', name: '', category: '', technique: '' }; 
   editando = false;
 

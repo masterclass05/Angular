@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class FighterService { // <--- AQUÍ ESTABA EL ERROR: Tenía que llamarse FighterService
+export class FighterService { 
   private http = inject(HttpClient);
   
-  // Cambiamos la URL para que apunte a tus luchadores
+  // 1. CAMBIO IMPORTANTE: Volvemos al puerto 3000 (el estándar de json-server)
+  // Asegúrate de que tu db.json tenga la clave "fighters"
   private apiUrl = 'http://localhost:3000/fighters';
 
   // OBTENER TODOS LOS LUCHADORES
@@ -17,17 +18,18 @@ export class FighterService { // <--- AQUÍ ESTABA EL ERROR: Tenía que llamarse
   }
 
   // BORRAR UN LUCHADOR
-  deleteFighter(id: string): Observable<any> {
+  // Cambiamos el tipo a string | number para evitar errores de coincidencia de ID
+  deleteFighter(id: string | number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
-  // AÑADIR NUEVO LUCHADOR (con los campos de tu proyecto MMA)
+  // AÑADIR NUEVO LUCHADOR
   addFighter(fighter: { name: string, category: string, technique: string }): Observable<any> {
     return this.http.post<any>(this.apiUrl, fighter);
   }
 
   // ACTUALIZAR LUCHADOR
-  updateFighter(id: string, fighter: any): Observable<any> {
+  updateFighter(id: string | number, fighter: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}`, fighter);
   }
 }

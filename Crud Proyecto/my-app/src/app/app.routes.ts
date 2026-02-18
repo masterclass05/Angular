@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { FighterComponent } from './components/pokemon/fighter'; 
+import { FighterComponent } from './components/fighter/fighter'; 
 
 export const routes: Routes = [
   // Redirigir la raíz al listado de luchadores por defecto
-  { path: '', redirectTo: '/luchadores', pathMatch: 'full' },
+  { path: '', redirectTo: '/fighter', pathMatch: 'full' },
   
   // Ruta principal del CRUD de MMA
   { 
-    path: 'luchadores', 
+    path: 'fighter', 
     component: FighterComponent, 
     title: 'MMA Fighters - Gestión' 
   }

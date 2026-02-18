@@ -1,24 +1,28 @@
 {
-  "pokemons": [
+  "fighters": [
     {
-      "id": "a980",
-      "name": "Pikachu",
-      "type": "Eléctrico"
+      "id": "1",
+      "name": "Ilia Topuria",
+      "category": "Peso Ligero",
+      "technique": "Volado"
     },
     {
-      "id": "addb",
-      "name": "Charizard",
-      "type": "Fuego"
+      "id": "2",
+      "name": "Islam Makachev",
+      "category": "Peso Welter",
+      "technique": "Double leg"
     },
     {
-      "id": "a465",
-      "name": "Squirtle",
-      "type": "Agua"
+      "id": "3",
+      "name": "Joel Alvarez",
+      "category": "Peso Welter",
+      "technique": "High Kick"
     },
     {
-      "id": "1fe1",
-      "name": "Bulbasaur",
-      "type": "Planta"
+      "id": "4",
+      "name": "Ale Pantoja",
+      "category": "Peso Mosca",
+      "technique": "Low kick"
     }
   ]
 }
