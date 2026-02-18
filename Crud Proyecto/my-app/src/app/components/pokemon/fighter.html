@@ -1,0 +1,25 @@
+<div class="crud-container">
+  <h2>Gestión de Luchadores - MMA FIGHTERS</h2>
+
+  <div class="form-box">
+    <input [(ngModel)]="nuevoFighter.name" placeholder="Nombre del luchador">
+    <input [(ngModel)]="nuevoFighter.category" placeholder="Categoría (ej: Peso Pluma)">
+    <input [(ngModel)]="nuevoFighter.technique" placeholder="Técnica principal">
+    
+    <button (click)="guardar()">{{ editando ? 'Actualizar' : 'Añadir Luchador' }}</button>
+    <button *ngIf="editando" (click)="cancelarEdicion()">Cancelar</button>
+  </div>
+
+  <div class="fighter-list">
+    <div *ngFor="let f of listaFighters" class="fighter-card">
+      <div class="info">
+        <strong>{{ f.name }}</strong> 
+        <span>{{ f.category }} - {{ f.technique }}</span>
+      </div>
+      <div class="actions">
+        <button (click)="seleccionarFighter(f)">Editar</button>
+        <button (click)="borrar(f.id)" class="btn-delete">Borrar</button>
+      </div>
+    </div>
+  </div>
+</div>
