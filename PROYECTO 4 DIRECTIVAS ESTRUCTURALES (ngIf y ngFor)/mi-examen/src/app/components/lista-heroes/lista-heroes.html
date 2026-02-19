@@ -1,0 +1,44 @@
+<div class="main-container">
+  <header class="header">
+    <h1>{{ titulo }}</h1>
+    <div class="status-bar">
+      <img [src]="imgUrl" class="logo-angular">
+      <button [disabled]="estaDesactivado" class="btn-dynamic">
+        {{ estaDesactivado ? '🔒 Bloqueado' : '🔓 Sistema Activo' }}
+      </button>
+    </div>
+  </header>
+
+  <section class="styles-demo">
+    <h3>Prueba de Estilos Dinámicos</h3>
+    <p [class]="claseRoja" class="base-text">Clase dinámica aplicada</p>
+    <p [style.color]="colorVerde" class="base-text">Estilo dinámico aplicado</p>
+  </section>
+
+  <hr class="separator">
+
+  <section class="actions">
+    <h3>Acciones de Event Binding</h3>
+    <div class="btn-group">
+      <button (click)="avisar('click')" class="btn btn-standard">Click Estándar</button>
+      <button (click)="avisar('on-click')" class="btn btn-alt">Click Alternativo</button>
+    </div>
+  </section>
+
+  <hr class="separator">
+
+  <section class="hero-list">
+    <h3>Escuadrón Registrado (Directivas)</h3>
+    <div class="hero-grid">
+      <div *ngFor="let hero of getHeroes()" class="hero-item">
+        <div class="hero-info">
+          <span class="hero-icon">👤</span>
+          <strong>{{ hero.nombre }}</strong> 
+          
+          <span *ngIf="hero.nombre === 'Spiderman'" class="badge-spider">🕷️ Avenger</span>
+          <span *ngIf="hero.power === 0" class="badge-danger">⚠️ SIN ENERGÍA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

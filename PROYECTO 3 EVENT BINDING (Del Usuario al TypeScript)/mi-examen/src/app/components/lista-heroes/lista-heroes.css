@@ -1,0 +1,19 @@
+.texto-peligro {
+  color: red;
+  font-weight: bold;
+}
+/* :host representa a TODO el componente (app-lista-heroes) */
+:host {
+  display: block;    /* ¡IMPORTANTE! Esto permite que el componente tenga ancho y márgenes */
+  max-width: 600px;  /* El ancho que prefieras */
+  margin: 40px auto; /* Centrado horizontal: arriba/abajo 40px, lados AUTO */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Un toque de diseño para el examen */
+}
+
+h1, h2 {
+  text-align: center; /* Centra también los títulos dentro */
+}

@@ -1,0 +1,13 @@
+<h1>{{ titulo }}</h1>
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <img [src]="imgUrl" width="80">
+</div>
+
+<button (click)="avisar('Click!')">Boton de prueba</button>
+
+<hr>
+
+<div *ngFor="let hero of getHeroes()">
+  <p><strong>{{ hero.nombre }}</strong> - Poder: {{ hero.power }}</p>
+</div>

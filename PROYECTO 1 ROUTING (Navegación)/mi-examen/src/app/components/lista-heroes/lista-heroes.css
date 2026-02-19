@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.hero-card {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  width: 150px;
+  transition: transform 0.2s;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+  border-color: #007bff;
+}
+
+.badge {
+  background: #28a745;
+  color: white;
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+
+.badge.danger {
+  background: #dc3545;
+}
+
+.btn-info, .btn-nav {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.btn-info { background: #17a2b8; color: white; }
+.btn-nav { background: #343a40; color: white; }

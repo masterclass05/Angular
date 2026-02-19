@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>{{ titulo }}</h1>
+  
+  <button (click)="avisar('Explorando la lista')" class="btn-info">
+    🔔 Tocar campana
+  </button>
+
+  <hr>
+
+  <div class="grid">
+    <div *ngFor="let hero of heroes" class="hero-card">
+      <img [src]="imgUrl" width="50">
+      <h3>{{ hero.nombre }}</h3>
+      <p>Poder: <strong>{{ hero.power }}</strong></p>
+      
+      <span *ngIf="hero.power > 90" class="badge">TOP HÉROE</span>
+      <span *ngIf="hero.power === 0" class="badge danger">SIN ENERGÍA</span>
+    </div>
+  </div>
+
+  <button routerLink="/detalle" class="btn-nav">Ver Detalles Técnicos ➡️</button>
+</div>

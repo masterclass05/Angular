@@ -1,0 +1,19 @@
+<div class="card">
+  <h1>{{ tituloExamen }}</h1>
+
+  <div class="image-container">
+    <img [src]="fotoAngular" alt="Logo Angular">
+  </div>
+
+  <p class="protagonista">
+    Héroe del día: <strong>{{ nombreProtagonista }}</strong>
+  </p>
+
+  <button [disabled]="botonBloqueado" class="btn-custom">
+    {{ botonBloqueado ? 'Botón Bloqueado' : '¡Ya puedes clicar!' }}
+  </button>
+  
+  <p class="nota" *ngIf="botonBloqueado">
+    (Cambia 'botonBloqueado' a false en el TS para activar este botón)
+  </p>
+</div>
