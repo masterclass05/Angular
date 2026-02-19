@@ -54,3 +54,17 @@ export class FighterComponent {
     this.fighterService.deleteFighter(id).subscribe(() => this.cargarFighters());
   }
 }
+/* usuario_id: Number,
+    nombre: String,
+    apellidos: String,        
+    edad: Number,
+    peso: Number,
+    altura: Number,
+    nivel: {
+        type: String,
+        enum: ['Principiante', 'Intermedio', 'Avanzado']
+    },
+    fecha_creacion: {
+        type: Number,                   
+        default: () => Math.floor(Date.now() / 1000)  
+    }*/ 
