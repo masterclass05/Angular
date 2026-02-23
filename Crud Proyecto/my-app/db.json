@@ -1,28 +1,34 @@
 {
   "fighters": [
     {
-      "id": "1",
-      "name": "Ilia Topuria",
-      "category": "Peso Ligero",
-      "technique": "Volado"
+      "id": "ac04",
+      "nombre": "Manuel",
+      "apellidos": "Masté Palacios",
+      "edad": 20,
+      "peso": 65,
+      "altura": 179,
+      "nivel": "Intermedio",
+      "fecha_creacion": 1771869491
     },
     {
-      "id": "2",
-      "name": "Islam Makachev",
-      "category": "Peso Welter",
-      "technique": "Double leg"
+      "id": "70ea",
+      "nombre": "Ilia ",
+      "apellidos": "Topuria",
+      "edad": 27,
+      "peso": 70,
+      "altura": 172,
+      "nivel": "Avanzado",
+      "fecha_creacion": 1771869540
     },
     {
-      "id": "3",
-      "name": "Joel Alvarez",
-      "category": "Peso Welter",
-      "technique": "High Kick"
-    },
-    {
-      "id": "4",
-      "name": "Ale Pantoja",
-      "category": "Peso Mosca",
-      "technique": "Low kick"
+      "id": "dc9b",
+      "nombre": "Pepe",
+      "apellidos": "López Gil",
+      "edad": 26,
+      "peso": 79,
+      "altura": 184,
+      "nivel": "Principiante",
+      "fecha_creacion": 1771869615
     }
   ]
 }

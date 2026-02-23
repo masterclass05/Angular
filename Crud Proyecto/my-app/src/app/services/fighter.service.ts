@@ -8,8 +8,7 @@ import { Observable } from 'rxjs';
 export class FighterService { 
   private http = inject(HttpClient);
   
-  // 1. CAMBIO IMPORTANTE: Volvemos al puerto 3000 (el estándar de json-server)
-  // Asegúrate de que tu db.json tenga la clave "fighters"
+
   private apiUrl = 'http://localhost:3000/fighters';
 
   // OBTENER TODOS LOS LUCHADORES
@@ -18,7 +17,6 @@ export class FighterService {
   }
 
   // BORRAR UN LUCHADOR
-  // Cambiamos el tipo a string | number para evitar errores de coincidencia de ID
   deleteFighter(id: string | number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }

@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FighterService } from '../../services/fighter.service';
+import { ActivatedRoute, Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-fighter',
@@ -10,15 +11,32 @@ import { FighterService } from '../../services/fighter.service';
   templateUrl: './fighter.html',
   styleUrl: './fighter.css',
 })
-export class FighterComponent {
+export class FighterComponent implements OnInit {
   fighterService = inject(FighterService);
+  route = inject(ActivatedRoute); 
+  router = inject(Router);        
+
   listaFighters: any[] = [];
-  
-  nuevoFighter = { id: '', name: '', category: '', technique: '' }; 
+  nuevoFighter: any; 
   editando = false;
+  vistaActual: 'lista' | 'formulario' = 'lista';
 
   constructor() {
+    this.resetFighter();
     this.cargarFighters();
+  }
+
+  ngOnInit() {
+    // Escuchamos cambios en la URL para cambiar la vista dinámicamente
+    this.route.queryParams.subscribe(params => {
+      if (params['vista'] === 'crear') {
+        this.vistaActual = 'formulario';
+        if (!this.editando) this.resetFighter();
+      } else {
+        this.vistaActual = 'lista';
+        this.editando = false;
+      }
+    });
   }
 
   cargarFighters() {
@@ -28,43 +46,49 @@ export class FighterComponent {
   seleccionarFighter(f: any) {
     this.nuevoFighter = { ...f };
     this.editando = true;
+    // Al editar, forzamos la vista de formulario sin necesidad de navegar
+    this.vistaActual = 'formulario'; 
   }
 
   guardar() {
     if (this.editando) {
       this.fighterService.updateFighter(this.nuevoFighter.id, this.nuevoFighter).subscribe(() => {
         this.cargarFighters();
-        this.cancelarEdicion();
+        this.volverALista();
       });
     } else {
-      const { id, ...sinId } = this.nuevoFighter; 
-      this.fighterService.addFighter(sinId).subscribe(() => {
+      const dataToSend = { ...this.nuevoFighter };
+      delete dataToSend.id; 
+      dataToSend.fecha_creacion = Math.floor(Date.now() / 1000);
+
+      this.fighterService.addFighter(dataToSend).subscribe(() => {
         this.cargarFighters();
-        this.cancelarEdicion();
+        this.volverALista();
       });
     }
   }
 
-  cancelarEdicion() {
-    this.nuevoFighter = { id: '', name: '', category: '', technique: '' };
+  resetFighter() {
+    this.nuevoFighter = { nombre: '', apellidos: '', edad: null, peso: null, altura: null, nivel: 'Principiante', fecha_creacion: null };
+  }
+
+  // MÉTODO CRÍTICO CORREGIDO:
+  volverALista() {
+    this.resetFighter();
     this.editando = false;
+    this.vistaActual = 'lista'; // Forzamos el cambio visual inmediato
+    
+    // Navegamos para limpiar la URL
+    this.router.navigate(['/fighter'], { 
+      queryParams: { vista: 'lista' }
+    });
+  }
+
+  cancelarEdicion() {
+    this.volverALista();
   }
 
   borrar(id: string) {
     this.fighterService.deleteFighter(id).subscribe(() => this.cargarFighters());
   }
 }
-/* usuario_id: Number,
-    nombre: String,
-    apellidos: String,        
-    edad: Number,
-    peso: Number,
-    altura: Number,
-    nivel: {
-        type: String,
-        enum: ['Principiante', 'Intermedio', 'Avanzado']
-    },
-    fecha_creacion: {
-        type: Number,                   
-        default: () => Math.floor(Date.now() / 1000)  
-    }*/ 

@@ -1,3 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* src/styles.css */
 @import "tailwindcss";
+
+/* Contenedor principal para que ocupe toda la pantalla */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0f0f0f; /* Fondo negro profundo */
+}
+
+/* Header estilo "Octágono" */
+.main-header {
+  background-color: #1a1a1a;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #ff6600; /* Línea naranja MMA */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.main-header h1 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Navegación */
+.main-header nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.main-header nav a:hover {
+  color: #ff6600;
+  background: rgba(255, 102, 0, 0.1);
+}
+
+/* Clase para el link activo */
+.main-header nav a.active {
+  border-bottom: 2px solid #ff6600;
+  color: #ff6600;
+}
+
+/* Contenedor del contenido (donde sale el router-outlet) */
+.content {
+  flex: 1;
+  padding: 20px;
+}

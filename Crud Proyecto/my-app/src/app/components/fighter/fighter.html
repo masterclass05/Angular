@@ -1,25 +1,67 @@
-<div class="crud-container">
-  <h2>Gestión de Luchadores - MMA FIGHTERS</h2>
+<div class="fighter-container">
+  
+  <div *ngIf="vistaActual === 'formulario'">
+    <h2>{{ editando ? 'Modificar Luchador' : 'Registro de Luchador' }}</h2>
 
-  <div class="form-box">
-    <input [(ngModel)]="nuevoFighter.name" placeholder="Nombre del luchador">
-    <input [(ngModel)]="nuevoFighter.category" placeholder="Categoría (ej: Peso Pluma)">
-    <input [(ngModel)]="nuevoFighter.technique" placeholder="Técnica principal">
-    
-    <button (click)="guardar()">{{ editando ? 'Actualizar' : 'Añadir Luchador' }}</button>
-    <button *ngIf="editando" (click)="cancelarEdicion()">Cancelar</button>
-  </div>
+    <form class="fighter-form" (ngSubmit)="guardar()">
+      <div class="form-grid">
+        <input type="text" [(ngModel)]="nuevoFighter.nombre" name="nombre" placeholder="Nombre" required>
+        <input type="text" [(ngModel)]="nuevoFighter.apellidos" name="apellidos" placeholder="Apellidos" required>
+        
+        <div class="biometric-row">
+          <input type="number" [(ngModel)]="nuevoFighter.edad" name="edad" placeholder="Edad" required>
+          <input type="number" [(ngModel)]="nuevoFighter.peso" name="peso" placeholder="Peso (kg)" required>
+          <input type="number" [(ngModel)]="nuevoFighter.altura" name="altura" placeholder="Altura (cm)" required>
+        </div>
 
-  <div class="fighter-list">
-    <div *ngFor="let f of listaFighters" class="fighter-card">
-      <div class="info">
-        <strong>{{ f.name }}</strong> 
-        <span>{{ f.category }} - {{ f.technique }}</span>
+        <div class="select-group">
+          <label for="nivel">Nivel de Experiencia:</label>
+          <select id="nivel" [(ngModel)]="nuevoFighter.nivel" name="nivel" required>
+            <option value="Principiante">Principiante</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+          </select>
+        </div>
       </div>
+
       <div class="actions">
-        <button (click)="seleccionarFighter(f)">Editar</button>
-        <button (click)="borrar(f.id)" class="btn-delete">Borrar</button>
+        <button type="submit">{{ editando ? 'Guardar Cambios' : 'Registrar' }}</button>
+        <button type="button" class="btn-cancel" *ngIf="editando" (click)="cancelarEdicion()">Cancelar</button>
       </div>
-    </div>
+    </form>
   </div>
+
+  <div *ngIf="vistaActual === 'lista'">
+    <h3>Directorio de Luchadores</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Luchador</th>
+          <th>Edad</th>
+          <th>Peso</th>
+          <th>Altura</th>
+          <th>Nivel</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let f of listaFighters">
+          <td class="name-cell">{{ f.nombre }} {{ f.apellidos }}</td>
+          <td>{{ f.edad }}</td>
+          <td>{{ f.peso }} kg</td>
+          <td>{{ f.altura }} cm</td>
+          <td>
+            <span [ngClass]="'badge-' + (f.nivel?.toLowerCase() || 'default')">
+              {{ f.nivel }}
+            </span>
+          </td>
+          <td>
+            <button class="btn-edit" (click)="seleccionarFighter(f)">Editar</button>
+            <button class="btn-delete" (click)="borrar(f.id)">Borrar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>

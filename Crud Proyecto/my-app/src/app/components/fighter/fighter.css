@@ -1,62 +1,171 @@
-.form-container {
-  background: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
+/* Contenedor Principal */
+.fighter-container {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    max-width: 1000px; /* Un poco más ancho para la tabla */
+    margin: 20px auto;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
 }
 
-input {
-  padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+h2, h3 {
+    color: #ff6600;
+    border-bottom: 2px solid #ff6600;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-/* Botones base */
+/* --- ESTRUCTURA DEL FORMULARIO (Recuperamos el Grid) --- */
+.fighter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.biometric-row {
+    grid-column: span 2;
+    display: flex;
+    gap: 15px;
+}
+
+.biometric-row input {
+    flex: 1;
+}
+
+.select-group {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Inputs y Selects con mejor visibilidad */
+input, select {
+    background: #262626;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #ff6600;
+    background: #2d2d2d;
+}
+
+/* --- BOTONES --- */
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
 button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: opacity 0.3s;
+    cursor: pointer;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
 }
 
-button:hover {
-  opacity: 0.8;
+/* Botón Registrar/Guardar */
+button[type="submit"] {
+    background-color: #ff6600;
+    color: white;
 }
 
-.btn-success {
-  background-color: #28a745; /* Verde */
-  color: white;
-  margin-right: 5px;
+button[type="submit"]:hover {
+    background-color: #e65c00;
 }
 
-.btn-danger {
-  background-color: #dc3545; /* Rojo */
-  color: white;
+/* Botón Cancelar */
+.btn-cancel {
+    background-color: #444;
+    color: white;
 }
 
-/* Estructura de las tarjetas */
-.pokemon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+/* Botones de la Tabla (Azul y Rojo) */
+.btn-edit {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    margin-right: 8px;
 }
 
-.card {
-  border: 1px solid #eee;
-  padding: 20px;
-  border-radius: 10px;
-  background: white;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+.btn-edit:hover { background-color: #0056b3; }
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 16px;
 }
 
-.card-actions {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+.btn-delete:hover { background-color: #a71d2a; }
+
+/* --- TABLA (Corregimos el amontonamiento) --- */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    background-color: #111;
+    border-radius: 8px;
+    overflow: hidden;
 }
+
+th, td {
+    padding: 18px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #222;
+    color: #ff6600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #333;
+}
+
+td {
+    border-bottom: 1px solid #222;
+    vertical-align: middle;
+}
+
+.name-cell {
+    font-weight: bold;
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #1a1a1a;
+}
+
+/* Badges de Nivel */
+[class^="badge-"] {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid currentColor;
+}
+
+.badge-principiante { color: #888; }
+.badge-intermedio { color: #3399ff; }
+.badge-avanzado { color: #ff3333; }

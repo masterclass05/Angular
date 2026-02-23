@@ -2,7 +2,21 @@
   <header class="main-header">
     <h1>MMA FIGHTERS</h1>
     <nav>
-      <a routerLink="/fighter" routerLinkActive="active">Lista de Luchadores</a>
+      <a 
+        routerLink="/fighter" 
+        [queryParams]="{vista: 'lista'}" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ matrixParams: 'ignored', queryParams: 'exact', paths: 'exact', fragment: 'ignored' }">
+        Lista de Luchadores
+      </a>
+      
+      <a 
+        routerLink="/fighter" 
+        [queryParams]="{vista: 'crear'}" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ matrixParams: 'ignored', queryParams: 'exact', paths: 'exact', fragment: 'ignored' }">
+        Crear Luchador
+      </a>
     </nav>
   </header>
 
